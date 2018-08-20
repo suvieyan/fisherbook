@@ -1,5 +1,3 @@
-
-
 def is_isbn_or_key(word):
     """
     p判断输入的参数是isbn还事关键字
