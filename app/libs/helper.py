@@ -8,7 +8,6 @@ def is_isbn_or_key(word):
            page
                start
                count
-
        :return:
        """
     isbn_or_key = 'key'
