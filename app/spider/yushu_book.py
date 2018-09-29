@@ -27,10 +27,14 @@ class YuShuBook:
         self.__fill_single(result)
 
     def search_by_keyword(self,keyword,page=1):
-        url = self.keyword_url.format(keyword,current_app.config['PER_PAGE'],cls.calculate_start)
+        url = self.keyword_url.format(keyword,current_app.config['PER_PAGE'],YuShuBook.calculate_start)
         result = HTTP.get(url)
         self.__fill_collection(result)
 
     @classmethod
     def calculate_start(page):
         return (page-1)*current_app.config['PER_PAGE']
+
+    def first(self):
+        return self.books[0] if self.total >= 1 else None
+

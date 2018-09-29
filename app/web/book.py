@@ -3,7 +3,7 @@
 """
 import json
 
-from flask import jsonify,request
+from flask import jsonify, request, flash, render_template
 
 from app.view_models.book import BookViewModel, BookCollection
 from app.web.blueprint import web
@@ -55,3 +55,39 @@ def search():
         return json.dumps(books,default=lambda o:o.__dict__)  # 把不能序列化的类，转换为可以序列化的
         # return jsonify(books)
     return jsonify(form.errors)
+
+
+@web.route('/book/<isbn>/detail')
+def book_detail(isbn):
+    pass
+
+
+@web.route('/test')
+def test():
+    r = {
+        'name': None,
+        'age': 18
+    }
+    # data['age']
+    r1 = {
+
+    }
+    flash('hello,qiyue', category='error')
+    flash('hello, jiuyue', category='warning')
+    # 模板 html
+    return render_template('test.html', data=r, data1=r1)
+
+
+# @web.route('/test1')
+# def test1():
+    # print(id(current_app))
+#     from flask import request
+#     from app.libs.none_local import n
+#     print(n.v)
+#     n.v = 2
+#     print('-----------------')
+#     print(getattr(request, 'v', None))
+#     setattr(request, 'v', 2)
+#     print('-----------------')
+#     return ''
+

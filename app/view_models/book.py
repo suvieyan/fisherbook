@@ -19,10 +19,16 @@ class BookViewModel:
         self.publisher = book['publisher']
         self.image = book['image']
         self.price = '￥' + book['price'] if book['price'] else book['price']
-        # self.isbn = get_isbn(book)
+        self.isbn = get_isbn(book)
         self.pubdate = book['pubdate']
         self.summary = book['summary']
         self.pages = book['pages']
+
+    @property
+    def intro(self):
+        # 如果x为空，就是false
+        intros = filter(lambda x:True if x else False,[self.author,self.publisher,self.price])
+        return '/'.join(intros)
 
 
 class BookCollection:
@@ -35,6 +41,10 @@ class BookCollection:
         self.total = yushu_book.total
         self.books = [BookViewModel(book) for book in yushu_book.books]
         self.keyword = keyword
+
+
+
+
 
 class _BookViewModel:
     # 类描述特征（类变量、实例变量）

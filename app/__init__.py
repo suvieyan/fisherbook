@@ -8,7 +8,7 @@ __author__ = 'yan'
 
 def create_app():
     # alt+enter 快捷导入
-    app = Flask(__name__,static_folder='view_models/statics')
+    app = Flask(__name__)
     print('__name__',__name__)  # app
     # 导入配置文件的路径
     app.config.from_object('app.secure')
@@ -26,8 +26,6 @@ def create_app():
     # db = SQLAlchemy(app)
 
     return app
-
-
 
 
 def register_blueprint(app):
